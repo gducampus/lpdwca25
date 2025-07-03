@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-cursor-teleport@1.6.0/dist/aframe-cursor-teleport-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+</head>
+<body>
+    <a-scene cursor="rayOrigin: mouse">
+        <a-assets>
+
+        </a-assets>
+        <a-entity environment="preset: forest"></a-entity>
+         <a-entity id="cameraRig" cursor-teleport="cameraRig: #cameraRig; cameraHead: #head">
+            <a-entity id="head" position="0 1.6 0" camera look-controls="reverseMouseDrag: true">
+                <a-entity id="ui">
+                    <a-text id="greeting-text"
+                            value="Bonjour visiteur"
+                            font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+                            width="2.5"
+                            align="left"
+                            position="-1.6 0.7 -1.8"
+                            geomety="primitive:plane; height:0.3; width:1.6"
+                            material="opacity:0, transparent:true">
+                        </a-text>
+                        <a-entity position="1.6 0.7 -1.8">
+                            <a-plane id="instruction-btn" color="#222" width="1" height="0.3" class="clickable">
+                                <a-text
+                                 value="Instruction"
+                                 align="center"
+                                 color="#ffffff"
+                                 font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+                                 position="0 0 0.01"
+                                 width="2"
+                                 geomety="primitive:plane; height:0.3; width:1"
+                                 material="opacity:0, transparent:true">
+                                 ></a-text>
+                            </a-plane>
+                        </a-entity>
+                </a-entity>
+            </a-entity>
+        </a-entity>
+        
+    </a-scene>
+    <script>
+        AFRAME.registerComponent('greeting', {
+            init: function(){
+                let prenom = localStorage.getItem('prenom');
+                let textEl = document.querySelector('#greeting-text');
+                textEl.setAttribute('value', 'Bonjour '+prenom);
+            }
+        })
+        document.querySelector('#head').setAttribute("greeting", "");
+    </script>
+    
+</body>
+</html>

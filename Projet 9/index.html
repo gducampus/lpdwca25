@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aframe interactions</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets-item>
+            
+        </a-assets-item>
+        <a-box 
+            position="1 0.5 -3" scale="1 1 1" color="#4cc3d9"
+            event-set__click="_target:#sphere; position: 2 2 2"
+        ></a-box>
+
+         <a-sphere id="sphere"
+            position="-1 0.5 -3" scale=" 0.3 0.3 0.1" color="#4cc3d9"
+        ></a-sphere>
+
+
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+    </a-scene>
+
+</body>
+</html>
